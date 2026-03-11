@@ -3,79 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICLR 2025 获奖论文深度分析</title>
+    <title>ICLR 2025 获奖论文</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #ffffff; color: #1a1a1a; line-height: 1.7; }
         
-        .cover { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 20px; text-align: center; }
-        .cover h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
-        .cover .subtitle { opacity: 0.8; font-size: 1.1rem; }
-        .cover .date { opacity: 0.6; margin-top: 20px; font-size: 0.9rem; }
+        /* 封面 */
+        .cover { min-height: 100vh; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
+        .cover h1 { font-size: 4rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 15px; }
+        .cover .subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 20px; }
+        .cover .date { opacity: 0.6; font-size: 0.95rem; }
         
-        .nav { display: flex; gap: 25px; justify-content: center; padding: 15px; background: #f8f9fa; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
-        .nav a { color: #666; text-decoration: none; font-weight: 500; padding: 8px 16px; border-radius: 20px; transition: all 0.3s; }
-        .nav a:hover { background: #ff3300; color: white; }
+        /* 论文页面 */
+        .paper-page { min-height: 100vh; padding: 60px 40px; page-break-after: always; }
+        .paper-page:last-child { page-break-after: avoid; }
         
-        .content { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .paper-container { max-width: 1000px; margin: 0 auto; }
         
-        /* 论文详情卡片 */
-        .paper-card { background: white; border-radius: 20px; margin-bottom: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
-        
-        .paper-header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: white; padding: 40px; }
-        .badge { display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-bottom: 15px; }
+        /* 奖章 */
+        .badge { display: inline-block; padding: 10px 24px; border-radius: 25px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px; }
         .badge-gold { background: #ffd700; color: #000; }
         .badge-silver { background: #c0c0c0; color: #000; }
         .badge-bronze { background: #cd7f32; color: #fff; }
         
-        .paper-title { font-size: 1.8rem; font-weight: 700; line-height: 1.4; }
+        /* 标题 */
+        .paper-title { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 30px; }
         
         /* 作者区域 */
-        .authors-section { padding: 40px; border-bottom: 1px solid #f0f0f0; }
-        .section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 20px; }
+        .authors-section { margin-bottom: 40px; }
+        .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 20px; }
         
-        .author-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .author-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         
-        .author-box { background: #f8f9fa; padding: 25px; border-radius: 16px; border-left: 4px solid #ff3300; }
-        .author-box.corresponding { border-left-color: #ffd700; }
+        .author-card { background: #f8f9fa; padding: 30px; border-radius: 16px; display: flex; gap: 25px; }
+        .author-card.corresponding { border: 2px solid #ffd700; }
         
-        .author-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .author-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .author-photo-placeholder { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #ff3300 0%, #ff6600 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 700; flex-shrink: 0; }
+        
+        .author-info { flex: 1; }
+        .author-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; }
         .author-role { color: #ff3300; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
-        .author-affil { color: #666; font-size: 0.95rem; margin-bottom: 15px; }
-        
+        .author-affil { color: #666; font-size: 0.95rem; margin-bottom: 12px; }
         .author-bio { font-size: 0.9rem; color: #555; line-height: 1.7; }
         
-        .author-photo { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #ff3300 0%, #ff6600 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; }
+        .all-authors { margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px; font-size: 0.9rem; color: #666; }
         
-        /* 创新点区域 */
-        .innovation-section { padding: 40px; background: #fafafa; }
-        
-        .innovation-grid { display: grid; gap: 15px; }
-        .innovation-item { display: flex; align-items: flex-start; gap: 15px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .innovation-icon { width: 40px; height: 40px; background: #ff3300; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; flex-shrink: 0; }
-        .innovation-text { font-size: 1rem; color: #333; }
+        /* 创新点 */
+        .innovation-section { background: #fafafa; padding: 35px; border-radius: 16px; margin-bottom: 30px; }
+        .innovation-list { display: flex; flex-direction: column; gap: 15px; }
+        .innovation-item { display: flex; gap: 15px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .innovation-num { width: 36px; height: 36px; background: #ff3300; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .innovation-content { flex: 1; }
+        .innovation-content strong { display: block; margin-bottom: 5px; }
         
         /* 研究意义 */
-        .impact-section { padding: 40px; border-top: 1px solid #f0f0f0; }
-        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
-        .impact-box { background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center; }
-        .impact-number { font-size: 2rem; font-weight: 700; color: #ff3300; }
-        .impact-label { font-size: 0.85rem; color: #666; }
+        .impact-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .impact-card { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: white; padding: 25px; border-radius: 12px; text-align: center; }
+        .impact-num { font-size: 2.2rem; font-weight: 700; color: #ffd700; margin-bottom: 8px; }
+        .impact-label { font-size: 0.9rem; opacity: 0.9; }
         
-        /* 技术细节 */
-        .tech-section { padding: 40px; background: #1a1a1a; color: white; }
-        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
-        .tech-item h4 { color: #ffd700; margin-bottom: 10px; font-size: 1rem; }
-        .tech-item p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+        /* 导航指示器 */
+        .page-nav { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+        .page-nav a { width: 12px; height: 12px; border-radius: 50%; background: #ccc; display: block; }
+        .page-nav a.active { background: #ff3300; }
         
-        /* 页脚 */
-        .footer { text-align: center; padding: 40px; color: #999; font-size: 0.9rem; background: #f8f9fa; }
-        
+        /* 响应式 */
         @media (max-width: 768px) {
-            .cover h1 { font-size: 2rem; }
-            .impact-grid { grid-template-columns: 1fr; }
-            .tech-grid { grid-template-columns: 1fr; }
-            .nav { gap: 10px; }
+            .cover h1 { font-size: 2.5rem; }
+            .paper-page { padding: 40px 20px; }
+            .author-grid { grid-template-columns: 1fr; }
+            .author-card { flex-direction: column; text-align: center; }
+            .author-photo, .author-photo-placeholder { margin: 0 auto; }
+            .impact-section { grid-template-columns: 1fr; }
+            .paper-title { font-size: 1.6rem; }
+        }
+        
+        @media print {
+            .paper-page { page-break-after: always; min-height: auto; padding: 30px; }
+            .page-nav { display: none; }
         }
     </style>
 </head>
@@ -84,133 +91,120 @@
     <div class="cover">
         <h1>ICLR 2025</h1>
         <p class="subtitle">🏆 获奖论文深度分析</p>
-        <p class="date">数据来源：ICLR Official Blog | 2025年4月22日发布</p>
+        <p class="date">数据来源：ICLR Official Blog | 2025年4月22日</p>
     </div>
     
     <!-- 导航 -->
-    <div class="nav">
-        <a href="#paper1">论文 #1</a>
-        <a href="#paper2">论文 #2</a>
-        <a href="#paper3">论文 #3</a>
+    <div class="page-nav">
+        <a href="#paper1" class="active"></a>
+        <a href="#paper2"></a>
+        <a href="#paper3"></a>
     </div>
     
-    <div class="content">
-        <!-- 获奖论文1 -->
-        <article id="paper1" class="paper-card">
-            <div class="paper-header">
-                <span class="badge badge-gold">🏆 Outstanding Paper #1</span>
-                <h2 class="paper-title">Safety Alignment Should be Made More Than Just a Few Tokens Deep</h2>
-            </div>
+    <!-- 论文1 -->
+    <section id="paper1" class="paper-page">
+        <div class="paper-container">
+            <span class="badge badge-gold">🏆 Outstanding Paper #1</span>
+            <h1 class="paper-title">Safety Alignment Should be Made More Than Just a Few Tokens Deep</h1>
             
             <div class="authors-section">
                 <p class="section-label">👤 作者团队</p>
                 <div class="author-grid">
-                    <div class="author-box">
-                        <div class="author-photo">XQ</div>
-                        <div class="author-name">Xiangyu Qi (齐相寓)</div>
-                        <div class="author-role">第一作者</div>
-                        <div class="author-affil">🎓 Princeton University 普林斯顿大学</div>
-                        <div class="author-bio">
-                            普林斯顿大学计算机科学系博士生，师从Peter Henderson教授。
-                            研究聚焦于AI安全、对齐(Alignment)和鲁棒性。
-                            论文揭示了当前安全对齐方法的深层局限性，为构建更安全的AI系统提供了重要理论基础。
-                            曾在NeurIPS、ICML等顶会发表多篇AI安全相关论文。
+                    <div class="author-card">
+                        <img src="https://avatars.githubusercontent.com/u/45935569?v=4" alt="Xiangyu Qi" class="author-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <div class="author-photo-placeholder" style="display:none;">XQ</div>
+                        <div class="author-info">
+                            <div class="author-name">Xiangyu Qi (齐相寓)</div>
+                            <div class="author-role">第一作者</div>
+                            <div class="author-affil">🎓 Princeton University</div>
+                            <div class="author-bio">普林斯顿大学CS博士生，师从Peter Henderson教授。研究AI安全、对齐和鲁棒性。论文揭示了当前安全对齐方法的深层局限性。</div>
                         </div>
                     </div>
                     
-                    <div class="author-box corresponding">
-                        <div class="author-photo">PH</div>
-                        <div class="author-name">Peter Henderson</div>
-                        <div class="author-role">通讯作者</div>
-                        <div class="author-affil">🎓 Princeton University 普林斯顿大学</div>
-                        <div class="author-bio">
-                            普林斯顿大学助理教授(Assistant Professor)，领导AI安全研究实验室。
-                            研究涵盖AI对齐、鲁棒机器学习、安全与隐私等多个方向。
-                            其研究工作多次获得顶会最佳论文奖，是AI安全领域的重要研究者。
-                            曾在Stanford取得博士学位，师从Dawn Song教授。
+                    <div class="author-card corresponding">
+                        <div class="author-photo-placeholder">PH</div>
+                        <div class="author-info">
+                            <div class="author-name">Peter Henderson</div>
+                            <div class="author-role">通讯作者</div>
+                            <div class="author-affil">🎓 Princeton University</div>
+                            <div class="author-bio">普林斯顿大学助理教授，领导AI安全研究实验室。涵盖AI对齐、鲁棒性、安全等方向。多次获得顶会最佳论文奖。</div>
                         </div>
                     </div>
                 </div>
                 
-                <div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
-                    <p style="font-size: 0.9rem; color: #666;"><strong>其他作者：</strong> Ashwinee Panda, Kaifeng Lyu, Xiao Ma, Subhrajit Roy, Ahmad Beirami, Prateek Mittal</p>
-                </div>
+                <div class="all-authors">📝 其他作者：Ashwinee Panda, Kaifeng Lyu, Xiao Ma, Subhrajit Roy, Ahmad Beirami, Prateek Mittal</div>
             </div>
             
             <div class="innovation-section">
                 <p class="section-label">💡 核心创新</p>
-                <div class="innovation-grid">
+                <div class="innovation-list">
                     <div class="innovation-item">
-                        <div class="innovation-icon">1</div>
-                        <div class="innovation-text">
-                            <strong>深度安全分析</strong> - 首次系统性揭示当前对齐方法仅在浅层(few tokens)生效的问题，证明安全约束可以被绕过
+                        <div class="innovation-num">1</div>
+                        <div class="innovation-content">
+                            <strong>深度安全分析</strong>
+                            首次系统性揭示当前对齐方法仅在浅层(few tokens)生效的问题，证明安全约束可被绕过
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">2</div>
-                        <div class="innovation-text">
-                            <strong>深层对齐方法</strong> - 提出Deep Alignment方法，通过更深层的参数调整实现更持久的安全对齐
+                        <div class="innovation-num">2</div>
+                        <div class="innovation-content">
+                            <strong>深层对齐方法</strong>
+                            提出Deep Alignment方法，通过更深层的参数调整实现更持久的安全对齐
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">3</div>
-                        <div class="innovation-text">
-                            <strong>评估框架</strong> - 构建了全面的安全对齐评估基准，包含多种攻击场景
+                        <div class="innovation-num">3</div>
+                        <div class="innovation-content">
+                            <strong>评估框架</strong>
+                            构建全面的安全对齐评估基准，包含多种攻击场景
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="impact-section">
-                <p class="section-label">🎯 研究意义</p>
-                <div class="impact-grid">
-                    <div class="impact-box">
-                        <div class="impact-number">AI安全</div>
-                        <div class="impact-label">直接关系到<br>大模型安全部署</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">产业应用</div>
-                        <div class="impact-label">为AI产品<br>安全标准提供依据</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">学术影响</div>
-                        <div class="impact-label">开辟AI安全<br>新研究方向</div>
-                    </div>
+                <div class="impact-card">
+                    <div class="impact-num">AI安全</div>
+                    <div class="impact-label">直接关系<br>大模型安全部署</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">产业</div>
+                    <div class="impact-label">为AI产品<br>安全标准提供依据</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">学术</div>
+                    <div class="impact-label">开辟AI安全<br>新研究方向</div>
                 </div>
             </div>
-        </article>
-        
-        <!-- 获奖论文2 -->
-        <article id="paper2" class="paper-card">
-            <div class="paper-header">
-                <span class="badge badge-silver">🥈 Outstanding Paper #2</span>
-                <h2 class="paper-title">Learning Dynamics of LLM Finetuning</h2>
-            </div>
+        </div>
+    </section>
+    
+    <!-- 论文2 -->
+    <section id="paper2" class="paper-page">
+        <div class="paper-container">
+            <span class="badge badge-silver">🥈 Outstanding Paper #2</span>
+            <h1 class="paper-title">Learning Dynamics of LLM Finetuning</h1>
             
             <div class="authors-section">
                 <p class="section-label">👤 作者团队</p>
                 <div class="author-grid">
-                    <div class="author-box">
-                        <div class="author-photo">YR</div>
-                        <div class="author-name">Yi Ren (任怡)</div>
-                        <div class="author-role">第一作者</div>
-                        <div class="author-affil">🎓 Stanford University 斯坦福大学</div>
-                        <div class="author-bio">
-                            斯坦福大学计算机科学系博士生，研究方向为机器学习和自然语言处理。
-                            深入探索了大语言模型微调过程中的学习动态机制。
-                            其研究为理解和改进微调方法提供了重要的理论基础。
+                    <div class="author-card">
+                        <div class="author-photo-placeholder">YR</div>
+                        <div class="author-info">
+                            <div class="author-name">Yi Ren (任怡)</div>
+                            <div class="author-role">第一作者</div>
+                            <div class="author-affil">🎓 Stanford University</div>
+                            <div class="author-bio">斯坦福大学CS博士生，研究ML和NLP。深入探索LLM微调过程中的学习动态机制，为理解和改进微调方法提供理论基础。</div>
                         </div>
                     </div>
                     
-                    <div class="author-box corresponding">
-                        <div class="author-photo">DS</div>
-                        <div class="author-name">Danica J. Sutherland</div>
-                        <div class="author-role">通讯作者</div>
-                        <div class="author-affil">🔬 Google DeepMind</div>
-                        <div class="author-bio">
-                            Google DeepMind研究科学家，在机器学习理论方面有深厚造诣。
-                            研究涵盖优化理论、表示学习和理论机器学习等多个领域。
-                            曾在CMU取得博士学位，是该领域备受瞩目的年轻研究者。
+                    <div class="author-card corresponding">
+                        <div class="author-photo-placeholder">DS</div>
+                        <div class="author-info">
+                            <div class="author-name">Danica J. Sutherland</div>
+                            <div class="author-role">通讯作者</div>
+                            <div class="author-affil">🔬 Google DeepMind</div>
+                            <div class="author-bio">Google DeepMind研究科学家，在机器学习理论方面有深厚造诣。研究涵盖优化理论、表示学习等。</div>
                         </div>
                     </div>
                 </div>
@@ -218,136 +212,128 @@
             
             <div class="innovation-section">
                 <p class="section-label">💡 核心创新</p>
-                <div class="innovation-grid">
+                <div class="innovation-list">
                     <div class="innovation-item">
-                        <div class="innovation-icon">1</div>
-                        <div class="innovation-text">
-                            <strong>学习动态理论</strong> - 建立了LLM微调过程的系统性理论框架，解释参数更新与模型行为变化的关系
+                        <div class="innovation-num">1</div>
+                        <div class="innovation-content">
+                            <strong>学习动态理论</strong>
+                            建立LLM微调系统性理论框架，解释参数更新与模型行为变化的关系
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">2</div>
-                        <div class="innovation-text">
-                            <strong>经验性分析</strong> - 通过大量实验验证了不同微调方法(LoRA、Full finetune等)的学习动态差异
+                        <div class="innovation-num">2</div>
+                        <div class="innovation-content">
+                            <strong>经验性分析</strong>
+                            通过大量实验验证不同微调方法(LoRA、Full finetune等)的学习动态差异
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">3</div>
-                        <div class="innovation-text">
-                            <strong>实践指导</strong> - 基于理论分析，提出针对不同场景的微调策略选择建议
+                        <div class="innovation-num">3</div>
+                        <div class="innovation-content">
+                            <strong>实践指导</strong>
+                            基于理论分析，提出针对不同场景的微调策略选择建议
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="impact-section">
-                <p class="section-label">🎯 研究意义</p>
-                <div class="impact-grid">
-                    <div class="impact-box">
-                        <div class="impact-number">理论贡献</div>
-                        <div class="impact-label">填补LLM微调<br>理论空白</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">工程价值</div>
-                        <div class="impact-label">指导实际微调<br>策略选择</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">方法改进</div>
-                        <div class="impact-label">推动微调方法<br>创新</div>
-                    </div>
+                <div class="impact-card">
+                    <div class="impact-num">理论</div>
+                    <div class="impact-label">填补LLM微调<br>理论空白</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">工程</div>
+                    <div class="impact-label">指导实际微调<br>策略选择</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">方法</div>
+                    <div class="impact-label">推动微调方法<br>创新</div>
                 </div>
             </div>
-        </article>
-        
-        <!-- 获奖论文3 -->
-        <article id="paper3" class="paper-card">
-            <div class="paper-header">
-                <span class="badge badge-bronze">🥉 Outstanding Paper #3</span>
-                <h2 class="paper-title">AlphaEdit: Null-Space Constrained Model Editing for Language Models</h2>
-            </div>
+        </div>
+    </section>
+    
+    <!-- 论文3 -->
+    <section id="paper3" class="paper-page">
+        <div class="paper-container">
+            <span class="badge badge-bronze">🥉 Outstanding Paper #3</span>
+            <h1 class="paper-title">AlphaEdit: Null-Space Constrained Model Editing for Language Models</h1>
             
             <div class="authors-section">
                 <p class="section-label">👤 作者团队</p>
                 <div class="author-grid">
-                    <div class="author-box">
-                        <div class="author-photo">JF</div>
-                        <div class="author-name">Junfeng Fang (方俊峰)</div>
-                        <div class="author-role">第一作者</div>
-                        <div class="author-affil">🎓 USTC 中国科学技术大学</div>
-                        <div class="author-bio">
-                            中国科学技术大学计算机科学系博士生，研究方向为模型编辑、知识更新和自然语言处理。
-                            提出了创新的AlphaEdit模型编辑方法，在保持模型原有能力的同时实现精准的知识修改。
-                            相关研究成果已发表在多个AI顶级会议。
+                    <div class="author-card">
+                        <div class="author-photo-placeholder">JF</div>
+                        <div class="author-info">
+                            <div class="author-name">Junfeng Fang (方俊峰)</div>
+                            <div class="author-role">第一作者</div>
+                            <div class="author-affil">🎓 USTC 中国科学技术大学</div>
+                            <div class="author-bio">中国科学技术大学CS博士生。提出AlphaEdit模型编辑方法，在保持模型原有能力的同时实现精准的知识修改。</div>
                         </div>
                     </div>
                     
-                    <div class="author-box corresponding">
-                        <div class="author-photo">TC</div>
-                        <div class="author-name">Tat-Seng Chua (蔡达成)</div>
-                        <div class="author-role">通讯作者</div>
-                        <div class="author-affil">🎓 NUS 新加坡国立大学</div>
-                        <div class="author-bio">
-                            新加坡国立大学(NUS)教授，KAMP实验室主任。
-                            是信息检索、多媒体分析和计算机视觉领域的国际知名学者。
-                            发表学术论文400+篇，被引用超过50,000次。
-                            多次担任ACM SIGIR、ACM MM等顶级会议主席。
+                    <div class="author-card corresponding">
+                        <div class="author-photo-placeholder">TC</div>
+                        <div class="author-info">
+                            <div class="author-name">Tat-Seng Chua (蔡达成)</div>
+                            <div class="author-role">通讯作者</div>
+                            <div class="author-affil">🎓 NUS 新加坡国立大学</div>
+                            <div class="author-bio">NUS教授，KAMP实验室主任。信息检索、多媒体分析领域国际知名学者。发表论文400+篇，引用50000+次。</div>
                         </div>
                     </div>
                 </div>
                 
-                <div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
-                    <p style="font-size: 0.9rem; color: #666;"><strong>其他作者：</strong> Houcheng Jiang, Kun Wang, Yunshan Ma, Jie Shi, Xiang Wang, Xiangnan He</p>
-                </div>
+                <div class="all-authors">📝 其他作者：Houcheng Jiang, Kun Wang, Yunshan Ma, Jie Shi, Xiang Wang, Xiangnan He</div>
             </div>
             
             <div class="innovation-section">
                 <p class="section-label">💡 核心创新</p>
-                <div class="innovation-grid">
+                <div class="innovation-list">
                     <div class="innovation-item">
-                        <div class="innovation-icon">1</div>
-                        <div class="innovation-text">
-                            <strong>零空间约束</strong> - 创新性地引入零空间约束，通过在参数空间的特定子空间进行编辑，确保模型原有能力不受影响
+                        <div class="innovation-num">1</div>
+                        <div class="innovation-content">
+                            <strong>零空间约束</strong>
+                            创新引入零空间约束，通过参数空间特定子空间进行编辑，确保模型原有能力不受影响
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">2</div>
-                        <div class="innovation-text">
-                            <strong>高效编辑</strong> - 相比现有方法，AlphaEdit实现更高效的模型编辑，单次编辑时间大幅降低
+                        <div class="innovation-num">2</div>
+                        <div class="innovation-content">
+                            <strong>高效编辑</strong>
+                            相比现有方法，AlphaEdit实现更高效模型编辑，单次编辑时间大幅降低
                         </div>
                     </div>
                     <div class="innovation-item">
-                        <div class="innovation-icon">3</div>
-                        <div class="innovation-text">
-                            <strong>泛化能力</strong> - 在多种任务上取得SOTA效果，包括事实修改、常识更新等
+                        <div class="innovation-num">3</div>
+                        <div class="innovation-content">
+                            <strong>泛化能力</strong>
+                            在多种任务取得SOTA效果，包括事实修改、常识更新等
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="impact-section">
-                <p class="section-label">🎯 研究意义</p>
-                <div class="impact-grid">
-                    <div class="impact-box">
-                        <div class="impact-number">知识更新</div>
-                        <div class="impact-label">解决LLM知识<br>过时问题</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">隐私保护</div>
-                        <div class="impact-label">支持模型<br>选择性遗忘</div>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-number">实际应用</div>
-                        <div class="impact-label">可用于AI助手<br>知识库更新</div>
-                    </div>
+                <div class="impact-card">
+                    <div class="impact-num">知识</div>
+                    <div class="impact-label">解决LLM<br>知识过时问题</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">隐私</div>
+                    <div class="impact-label">支持模型<br>选择性遗忘</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-num">应用</div>
+                    <div class="impact-label">可用于AI助手<br>知识库更新</div>
                 </div>
             </div>
-        </article>
-    </div>
+        </div>
+    </section>
     
     <!-- 底部 -->
-    <div class="footer">
+    <div style="text-align: center; padding: 40px; color: #999; font-size: 0.9rem;">
         <p>📊 数据来源：ICLR Official Blog | 发布日期：2025年4月22日</p>
-        <p style="margin-top: 10px;">⚠️ 作者信息基于公开资料整理，如有不实请指正</p>
     </div>
 </body>
 </html>
