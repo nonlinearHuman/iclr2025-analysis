@@ -10,7 +10,7 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.7; }
         
         /* 封面 */
-        .cover { min-height: 60vh; background: #1a1a1a; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; }
+        .cover { min-height: 40vh; background: #fff; color: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; border-bottom: 3px solid #ff3300; }
         .cover h1 { font-size: 4rem; font-weight: 800; margin-bottom: 15px; }
         .cover .subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
         .cover .date { opacity: 0.6; font-size: 0.9rem; }
@@ -58,9 +58,9 @@
         
         /* 研究意义 */
         .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .impact-card { background: #1a1a1a; color: #fff; padding: 25px; border-radius: 14px; text-align: center; }
-        .impact-num { font-size: 2rem; font-weight: 700; color: #ffd700; margin-bottom: 8px; }
-        .impact-label { font-size: 0.9rem; opacity: 0.9; }
+        .impact-card { background: #f8f9fa; color: #1a1a1a; padding: 25px; border-radius: 14px; text-align: center; border: 1px solid #eee; }
+        .impact-num { font-size: 2rem; font-weight: 700; color: #ff3300; margin-bottom: 8px; }
+        .impact-label { font-size: 0.9rem; color: #666; }
         
         /* 页码 */
         .page-num { position: fixed; bottom: 25px; left: 30px; color: #999; font-size: 0.85rem; }
@@ -228,15 +228,15 @@
             
             <div class="impact">
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9;">理论</div>
+                    <div class="impact-num" style="color:#4a90d9 !important;">理论</div>
                     <div class="impact-label">填补LLM微调<br>理论空白</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9;">工程</div>
+                    <div class="impact-num" style="color:#4a90d9 !important;">工程</div>
                     <div class="impact-label">指导实际微调<br>策略选择</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9;">方法</div>
+                    <div class="impact-num" style="color:#4a90d9 !important;">方法</div>
                     <div class="impact-label">推动微调方法<br>创新</div>
                 </div>
             </div>
@@ -307,15 +307,15 @@
             
             <div class="impact">
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017;">知识</div>
+                    <div class="impact-num" style="color:#d4a017 !important;">知识</div>
                     <div class="impact-label">解决LLM<br>知识过时问题</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017;">隐私</div>
+                    <div class="impact-num" style="color:#d4a017 !important;">隐私</div>
                     <div class="impact-label">支持模型<br>选择性遗忘</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017;">应用</div>
+                    <div class="impact-num" style="color:#d4a017 !important;">应用</div>
                     <div class="impact-label">用于AI助手<br>知识库更新</div>
                 </div>
             </div>
