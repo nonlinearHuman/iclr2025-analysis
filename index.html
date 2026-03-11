@@ -10,66 +10,69 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.7; }
         
         /* 封面 */
-        .cover { min-height: 40vh; background: #fff; color: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; border-bottom: 3px solid #ff3300; }
-        .cover h1 { font-size: 4rem; font-weight: 800; margin-bottom: 15px; }
-        .cover .subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
-        .cover .date { opacity: 0.6; font-size: 0.9rem; }
+        .cover { min-height: 35vh; background: #fff; color: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 50px 20px; border-bottom: 3px solid #ff3300; }
+        .cover h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+        .cover .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 20px; }
+        .cover .date { color: #999; font-size: 0.9rem; }
         
         /* 论文页面 */
-        .paper-page { min-height: 100vh; padding: 80px 40px; display: flex; align-items: center; justify-content: center; background: #fff; border-bottom: 1px solid #eee; }
-        .paper-container { max-width: 900px; width: 100%; }
+        .paper-page { min-height: 100vh; padding: 60px 30px; display: flex; align-items: center; justify-content: center; background: #fff; border-bottom: 1px solid #eee; }
+        .paper-container { max-width: 850px; width: 100%; }
         
-        /* 标题区域 */
-        .header { margin-bottom: 50px; }
-        .badge { display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; }
+        /* 标题 */
+        .header { margin-bottom: 40px; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 15px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; }
         .badge-gold { background: #ffd700; color: #000; }
         .badge-silver { background: #c0c0c0; color: #000; }
         .badge-bronze { background: #cd7f32; color: #fff; }
         
-        .paper-title { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 40px; }
+        .paper-title { font-size: 2rem; font-weight: 700; line-height: 1.3; }
         
         /* 作者 */
-        .authors { margin-bottom: 45px; }
-        .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 20px; }
+        .authors { margin-bottom: 40px; }
+        .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 18px; }
         
-        .author-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .author-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         
-        .author-card { background: #f8f9fa; padding: 25px; border-radius: 16px; display: flex; gap: 20px; }
+        .author-card { background: #f8f9fa; padding: 22px; border-radius: 14px; display: flex; gap: 18px; }
         .author-card.corresponding { border: 2px solid #ffd700; }
         
-        .author-photo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-        .author-photo-placeholder { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #ff3300, #ff6600); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; font-weight: 700; flex-shrink: 0; }
+        .author-photo { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .author-photo-placeholder { width: 85px; height: 85px; border-radius: 50%; background: linear-gradient(135deg, #ff3300, #ff6600); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; font-weight: 700; flex-shrink: 0; }
         
-        .author-info { flex: 1; }
-        .author-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-        .author-role { color: #ff3300; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
-        .author-affil { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
-        .author-bio { font-size: 0.9rem; color: #555; }
+        .author-info { flex: 1; min-width: 0; }
+        .author-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 3px; }
+        .author-role { color: #ff3300; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; }
+        .author-affil { color: #666; font-size: 0.85rem; margin-bottom: 8px; }
         
-        .all-authors { margin-top: 18px; padding: 12px 18px; background: #f0f0f0; border-radius: 8px; font-size: 0.85rem; color: #666; }
+        .author-meta { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+        .author-papers { font-size: 0.8rem; color: #666; background: #fff; padding: 10px; border-radius: 8px; margin-top: 8px; }
+        .author-papers strong { color: #333; }
+        
+        .all-authors { margin-top: 15px; padding: 10px 15px; background: #f0f0f0; border-radius: 8px; font-size: 0.8rem; color: #666; }
         
         /* 创新点 */
-        .innovation { background: #f8f9fa; padding: 30px; border-radius: 16px; margin-bottom: 35px; }
-        .innovation-list { display: flex; flex-direction: column; gap: 15px; }
-        .innovation-item { display: flex; gap: 15px; background: #fff; padding: 18px; border-radius: 12px; }
-        .innovation-num { width: 36px; height: 36px; background: #ff3300; color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
-        .innovation-content strong { display: block; margin-bottom: 4px; }
-        .innovation-content p { font-size: 0.9rem; color: #666; margin: 0; }
+        .innovation { background: #f8f9fa; padding: 25px; border-radius: 14px; margin-bottom: 30px; }
+        .innovation-list { display: flex; flex-direction: column; gap: 12px; }
+        .innovation-item { display: flex; gap: 12px; background: #fff; padding: 15px; border-radius: 10px; }
+        .innovation-num { width: 32px; height: 32px; background: #ff3300; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+        .innovation-content strong { display: block; font-size: 0.95rem; margin-bottom: 3px; }
+        .innovation-content p { font-size: 0.85rem; color: #666; margin: 0; }
         
         /* 研究意义 */
-        .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .impact-card { background: #f8f9fa; color: #1a1a1a; padding: 25px; border-radius: 14px; text-align: center; border: 1px solid #eee; }
-        .impact-num { font-size: 2rem; font-weight: 700; color: #ff3300; margin-bottom: 8px; }
-        .impact-label { font-size: 0.9rem; color: #666; }
+        .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .impact-card { background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center; }
+        .impact-num { font-size: 1.8rem; font-weight: 700; color: #ff3300; margin-bottom: 5px; }
+        .impact-label { font-size: 0.85rem; color: #666; }
         
         /* 页码 */
-        .page-num { position: fixed; bottom: 25px; left: 30px; color: #999; font-size: 0.85rem; }
+        .page-num { position: fixed; bottom: 20px; left: 25px; color: #ccc; font-size: 0.8rem; }
         
         /* 响应式 */
         @media (max-width: 768px) {
             .cover h1 { font-size: 2.5rem; }
-            .paper-page { padding: 60px 20px; }
-            .paper-title { font-size: 1.6rem; }
+            .paper-page { padding: 50px 18px; }
+            .paper-title { font-size: 1.5rem; }
             .author-grid { grid-template-columns: 1fr; }
             .author-card { flex-direction: column; text-align: center; }
             .author-photo, .author-photo-placeholder { margin: 0 auto; }
@@ -102,9 +105,14 @@
                         <div class="author-photo-placeholder" style="display:none;">XQ</div>
                         <div class="author-info">
                             <div class="author-name">Xiangyu Qi (齐相寓)</div>
-="author-role">                            <div class第一作者</div>
-                            <div class="author-affil">🎓 Princeton University</div>
-                            <div class="author-bio">普林斯顿大学CS博士生，师从Peter Henderson教授。研究AI安全对齐和鲁棒性。</div>
+                            <div class="author-role">第一作者</div>
+                            <div class="author-affil">🎓 Princeton University 普林斯顿大学</div>
+                            <div class="author-meta">📍 Princeton, NJ, USA | 🎓 PhD @ Princeton ECE</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • Safety Alignment Should be Made More Than Just a Few Tokens Deep (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                     
@@ -113,8 +121,13 @@
                         <div class="author-info">
                             <div class="author-name">Peter Henderson</div>
                             <div class="author-role">通讯作者</div>
-                            <div class="author-affil">🎓 Princeton University</div>
-                            <div class="author-bio">普林斯顿大学助理教授，领导AI安全研究。多次获得顶会最佳论文奖。</div>
+                            <div class="author-affil">🎓 Princeton University 普林斯顿大学</div>
+                            <div class="author-meta">📍 Princeton, NJ, USA | 🎓 Assistant Professor</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • Safety Alignment Should be Made More Than Just a Few Tokens Deep (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,8 +195,13 @@
                         <div class="author-info">
                             <div class="author-name">Yi Ren (任怡)</div>
                             <div class="author-role">第一作者</div>
-                            <div class="author-affil">🎓 Stanford University</div>
-                            <div class="author-bio">斯坦福大学CS博士生，研究ML和NLP，探索LLM微调学习动态。</div>
+                            <div class="author-affil">🎓 Stanford University 斯坦福大学</div>
+                            <div class="author-meta">📍 Stanford, CA, USA | 🎓 PhD Student</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • Learning Dynamics of LLM Finetuning (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                     
@@ -193,7 +211,12 @@
                             <div class="author-name">Danica J. Sutherland</div>
                             <div class="author-role">通讯作者</div>
                             <div class="author-affil">🔬 Google DeepMind</div>
-                            <div class="author-bio">Google DeepMind研究科学家，机器学习理论专家。</div>
+                            <div class="author-meta">📍 Mountain View, CA | 🔬 Research Scientist</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • Learning Dynamics of LLM Finetuning (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -228,15 +251,15 @@
             
             <div class="impact">
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9 !important;">理论</div>
+                    <div class="impact-num" style="color:#4a90d9;">理论</div>
                     <div class="impact-label">填补LLM微调<br>理论空白</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9 !important;">工程</div>
+                    <div class="impact-num" style="color:#4a90d9;">工程</div>
                     <div class="impact-label">指导实际微调<br>策略选择</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#4a90d9 !important;">方法</div>
+                    <div class="impact-num" style="color:#4a90d9;">方法</div>
                     <div class="impact-label">推动微调方法<br>创新</div>
                 </div>
             </div>
@@ -261,7 +284,12 @@
                             <div class="author-name">Junfeng Fang (方俊峰)</div>
                             <div class="author-role">第一作者</div>
                             <div class="author-affil">🎓 USTC 中国科学技术大学</div>
-                            <div class="author-bio">中国科学技术大学博士生，提出AlphaEdit模型编辑方法。</div>
+                            <div class="author-meta">📍 Hefei, China | 🎓 PhD Student</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • AlphaEdit (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                     
@@ -271,7 +299,12 @@
                             <div class="author-name">Tat-Seng Chua (蔡达成)</div>
                             <div class="author-role">通讯作者</div>
                             <div class="author-affil">🎓 NUS 新加坡国立大学</div>
-                            <div class="author-bio">NUS教授，KAMP实验室主任，论文400+篇，引用50000+。</div>
+                            <div class="author-meta">📍 Singapore | 🎓 Professor | 📊 50000+ citations</div>
+                            <div class="author-papers">
+                                <strong>近三年高引论文：</strong><br>
+                                • AlphaEdit (ICLR 2025)<br>
+                                • [待补充更多论文]
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,15 +340,15 @@
             
             <div class="impact">
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017 !important;">知识</div>
+                    <div class="impact-num" style="color:#d4a017;">知识</div>
                     <div class="impact-label">解决LLM<br>知识过时问题</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017 !important;">隐私</div>
+                    <div class="impact-num" style="color:#d4a017;">隐私</div>
                     <div class="impact-label">支持模型<br>选择性遗忘</div>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-num" style="color:#d4a017 !important;">应用</div>
+                    <div class="impact-num" style="color:#d4a017;">应用</div>
                     <div class="impact-label">用于AI助手<br>知识库更新</div>
                 </div>
             </div>
@@ -324,8 +357,9 @@
     </section>
     
     <!-- 底部 -->
-    <div style="text-align: center; padding: 40px; color: #999; font-size: 0.9rem; background: #f8f9fa;">
+    <div style="text-align: center; padding: 30px; color: #999; font-size: 0.85rem; background: #f8f9fa;">
         <p>📊 数据来源：ICLR Official Blog | 发布日期：2025年4月22日</p>
+        <p style="margin-top:5px;color:#ccc;">⚠️ 近三年高引论文待补充完整</p>
     </div>
 </body>
 </html>
